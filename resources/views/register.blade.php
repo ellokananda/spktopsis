@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="{{ asset('style/vendors/feather/feather.css') }}">
   <link rel="stylesheet" href="{{ asset('style/vendors/ti-icons/css/themify-icons.css') }}">
   <link rel="stylesheet" href="{{ asset('style/vendors/css/vendor.bundle.base.css') }}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/themify-icons/0.1.0/css/themify-icons.min.css" rel="stylesheet">
+</head>
   <!-- endinject -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('style/css/vertical-layout-light/style.css') }}">
@@ -60,10 +62,17 @@
                   <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Username" value="{{ old('username') }}" required>
                 </div>
 
-                <!-- Input password -->
-                <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password" required>
-                </div>
+                <div class="form-group position-relative">
+  <input type="password" name="password" class="form-control form-control-lg" id="password" placeholder="Password" required>
+  <span class="position-absolute" 
+        style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;" 
+        onclick="togglePasswordVisibility()">
+    <i id="togglePasswordIcon" class="ti-eye"></i>
+  </span>
+  @error('password')
+    <div class="alert alert-danger">{{ $message }}</div>
+  @enderror
+</div>
 
                 <!-- Input role -->
                 <div class="form-group">
@@ -104,6 +113,26 @@
   <script src="{{ asset('style/js/settings.js') }}"></script>
   <script src="{{ asset('style/js/todolist.js') }}"></script>
   <!-- endinject -->
+  <script>
+  function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('password');
+    const togglePasswordIcon = document.getElementById('togglePasswordIcon');
+
+    // Toggle password visibility
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text'; // Ubah tipe input menjadi text untuk menampilkan password
+      togglePasswordIcon.classList.remove('ti-eye'); // Ganti ikon menjadi mata terbuka
+      togglePasswordIcon.classList.add('ti-eye-off'); // Ikon mata tertutup
+    } else {
+      passwordInput.type = 'password'; // Ubah tipe input menjadi password untuk menyembunyikan password
+      togglePasswordIcon.classList.remove('ti-eye-off'); // Ganti ikon menjadi mata tertutup
+      togglePasswordIcon.classList.add('ti-eye'); // Ikon mata terbuka
+    }
+  }
+</script>
+
+
+
   </body>
 
 </html>

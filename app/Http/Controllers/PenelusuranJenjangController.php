@@ -29,62 +29,58 @@ public function store(Request $request)
     // Ambil nilai rata-rata
     $nilaiRataRata = $request->input('rata');
 
-    // Hitung poin rata-rata prestasi
-    // Jika array prestasi kosong, buat prestasi default
-    $prestasi = $request->input('prestasi', []);  // Ambil data prestasi dari request
+    // Hitung poin total prestasi
+    $prestasi = $request->input('prestasi', []); // Ambil data prestasi dari request
+    $totalPrestasi = 1; // Inisialisasi total prestasi
+
+    // Jika tidak ada prestasi, tambahkan poin default
     if (empty($prestasi)) {
-        $prestasiTextString = 'Tidak ada prestasi';  // Jika tidak ada prestasi
+        $prestasiTextString = 'Tidak ada prestasi';
     } else {
-        // Gabungkan prestasi menjadi satu string dengan koma
-        $prestasiTextString = implode(', ', $prestasi);  
-    }
-    
-    $totalPrestasi = 0; // Total poin prestasi
-    $prestasiText = []; 
-    $jumlahPrestasi = count($prestasi);
-
-    foreach ($prestasi as $item) {
-        switch ($item) {
-            case 'Juara 1 Kejuaraan Internasional (antar negara) ':
-                $totalPrestasi += 60;
-                break;
-            case 'Juara 1 Kejuaraan Nasional (antar provinsi) ':
-                $totalPrestasi += 55;
-                break;
-            case 'Juara 1 Kejuaraan Regional (antar kota atau kabupaten) ':
-                $totalPrestasi += 50;
-                break;
-            case 'Juara 1 Kejuaraan Local (turnamen sekolah/kompetisi komunitas) ':
-                $totalPrestasi += 45;
-                break;
-            case 'Juara 2 Kejuaraan Internasional (antar negara) ':
-                $totalPrestasi += 50;
-                break;
-            case 'Juara 2 Kejuaraan Nasional (antar provinsi) ':
-                $totalPrestasi += 45;
-                break;
-            case 'Juara 2 Kejuaraan Regional (antar kota atau kabupaten) ':
-                $totalPrestasi += 40;
-                break;
-            case 'Juara 2 Kejuaraan Local (turnamen sekolah/kompetisi komunitas) ':
-                $totalPrestasi += 35;
-                break;
-            case 'Juara 3 Kejuaraan Internasional (antar negara) ':
-                $totalPrestasi += 30;
-                break;
-            case 'Juara 3 Kejuaraan Nasional (antar provinsi) ':
-                $totalPrestasi += 25;
-                break;
-            case 'Juara 3 Kejuaraan Regional (antar kota atau kabupaten) ':
-                $totalPrestasi += 20;
-                break;
-            case 'Juara 3 Kejuaraan Local (turnamen sekolah/kompetisi komunitas) ':
-                $totalPrestasi += 15;
-                break;
+        // Hitung total nilai prestasi
+        foreach ($prestasi as $item) {
+            switch ($item) {
+                case 'Juara 1 Kejuaraan Internasional':
+                    $totalPrestasi += 60;
+                    break;
+                case 'Juara 1 Kejuaraan Nasional':
+                    $totalPrestasi += 55;
+                    break;
+                case 'Juara 1 Kejuaraan Regional':
+                    $totalPrestasi += 50;
+                    break;
+                case 'Juara 1 Kejuaraan Local':
+                    $totalPrestasi += 45;
+                    break;
+                case 'Juara 2 Kejuaraan Internasional':
+                    $totalPrestasi += 50;
+                    break;
+                case 'Juara 2 Kejuaraan Nasional':
+                    $totalPrestasi += 45;
+                    break;
+                case 'Juara 2 Kejuaraan Regional':
+                    $totalPrestasi += 40;
+                    break;
+                case 'Juara 2 Kejuaraan Local':
+                    $totalPrestasi += 35;
+                    break;
+                case 'Juara 3 Kejuaraan Internasional':
+                    $totalPrestasi += 30;
+                    break;
+                case 'Juara 3 Kejuaraan Nasional':
+                    $totalPrestasi += 25;
+                    break;
+                case 'Juara 3 Kejuaraan Regional':
+                    $totalPrestasi += 20;
+                    break;
+                case 'Juara 3 Kejuaraan Local':
+                    $totalPrestasi += 15;
+                    break;
+            }
         }
+        // Gabungkan prestasi menjadi string
+        $prestasiTextString = implode(', ', $prestasi);
     }
-
-    $poinNonAkademik = $jumlahPrestasi > 0 ? $totalPrestasi / $jumlahPrestasi : 1;
 
     // Ambil nomor identitas pengguna yang login
     $nomor_identitas = Auth::user()->nomor_identitas;
@@ -92,7 +88,7 @@ public function store(Request $request)
     // Ambil data siswa berdasarkan nomor identitas
     $siswah = Siswah::where('nis', $nomor_identitas)->first();
 
-    // Update field prestasi dengan string gabungan
+    // Update data siswa dengan nilai rata-rata dan prestasi
     $siswah->update([
         'rata' => $nilaiRataRata,
         'prestasi' => $prestasiTextString,  // Simpan string prestasi
@@ -105,14 +101,15 @@ public function store(Request $request)
     foreach ($request->penilaian as $pertanyaan_id => $nilai) {
         Penilaian::create([
             'pengguna_id' => $pengguna_id,
-            'pertanyaan_id' => $pertanyaan_id,  // ID pertanyaan minat
-            'nilai' => $nilai,                              // Nilai penilaian
+            'pertanyaan_id' => $pertanyaan_id,
+            'nilai' => $nilai,
             'rata' => $nilaiRataRata,
-            'prestasi' => $poinNonAkademik,
+            'prestasi' => $totalPrestasi, // Simpan total nilai prestasi
         ]);
     }
 
     // Redirect dengan pesan sukses
     return redirect()->route('penelusuran-jenjang.index')->with('success', 'Penilaian berhasil disimpan');
-}   
+}
+
 }

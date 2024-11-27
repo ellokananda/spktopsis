@@ -3,6 +3,7 @@
 @section('content')
     <!-- Judul Halaman -->
     <div class="col-lg-15 grid-margin stretch-card">
+        
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Penelusuran Jenjang</h4>
@@ -24,40 +25,40 @@
                     <div class="form-group">
                         <label>Prestasi</label><br>
                         <label class="d-block">
-                            <input type="checkbox" name="prestasi[]" value="Juara 1 Kejuaraan Internasional"> Juara 1 Kejuaraan Internasional
+                            <input type="checkbox" name="prestasi[]" value="Juara 1 Kejuaraan Internasional"> Juara 1 Kejuaraan Internasional (antar negara)
                         </label>
                         <label class="d-block">
-                            <input type="checkbox" name="prestasi[]" value="Juara 1 Kejuaraan Nasional"> Juara 1 Kejuaraan Nasional
+                            <input type="checkbox" name="prestasi[]" value="Juara 1 Kejuaraan Nasional"> Juara 1 Kejuaraan Nasional (antar provinsi) 
                         </label>
                         <label class="d-block">
-                            <input type="checkbox" name="prestasi[]" value="Juara 1 Kejuaraan Regional"> Juara 1 Kejuaraan Regional
+                            <input type="checkbox" name="prestasi[]" value="Juara 1 Kejuaraan Regional"> Juara 1 Kejuaraan Regional (antar kota atau kabupaten) 
                         </label>
                         <label class="d-block">
-                            <input type="checkbox" name="prestasi[]" value="Juara 1 Kejuaraan Local"> Juara 1 Kejuaraan Local
+                            <input type="checkbox" name="prestasi[]" value="Juara 1 Kejuaraan Local"> Juara 1 Kejuaraan Local (turnamen sekolah/kompetisi komunitas) 
                         </label>
                         <label class="d-block">
-                            <input type="checkbox" name="prestasi[]" value="Juara 2 Kejuaraan Internasional"> Juara 2 Kejuaraan Internasional
+                            <input type="checkbox" name="prestasi[]" value="Juara 2 Kejuaraan Internasional"> Juara 2 Kejuaraan Internasional (antar negara)
                         </label>
                         <label class="d-block">
-                            <input type="checkbox" name="prestasi[]" value="Juara 2 Kejuaraan Nasional"> Juara 2 Kejuaraan Nasional
+                            <input type="checkbox" name="prestasi[]" value="Juara 2 Kejuaraan Nasional"> Juara 2 Kejuaraan Nasional (antar provinsi) 
                         </label>
                         <label class="d-block">
-                            <input type="checkbox" name="prestasi[]" value="Juara 2 Kejuaraan Regional"> Juara 2 Kejuaraan Regional
+                            <input type="checkbox" name="prestasi[]" value="Juara 2 Kejuaraan Regional"> Juara 2 Kejuaraan Regional (antar kota atau kabupaten) 
                         </label>
                         <label class="d-block">
-                            <input type="checkbox" name="prestasi[]" value="Juara 2 Kejuaraan Local"> Juara 2 Kejuaraan Local
+                            <input type="checkbox" name="prestasi[]" value="Juara 2 Kejuaraan Local"> Juara 2 Kejuaraan Local (turnamen sekolah/kompetisi komunitas) 
                         </label>
                         <label class="d-block">
-                            <input type="checkbox" name="prestasi[]" value="Juara 3 Kejuaraan Internasional"> Juara 3 Kejuaraan Internasional
+                            <input type="checkbox" name="prestasi[]" value="Juara 3 Kejuaraan Internasional"> Juara 3 Kejuaraan Internasional (antar negara)
                         </label>
                         <label class="d-block">
-                            <input type="checkbox" name="prestasi[]" value="Juara 3 Kejuaraan Nasional"> Juara 3 Kejuaraan Nasional
+                            <input type="checkbox" name="prestasi[]" value="Juara 3 Kejuaraan Nasional"> Juara 3 Kejuaraan Nasional (antar provinsi) 
                         </label>
                         <label class="d-block">
-                            <input type="checkbox" name="prestasi[]" value="Juara 3 Kejuaraan Regional"> Juara 3 Kejuaraan Regional
+                            <input type="checkbox" name="prestasi[]" value="Juara 3 Kejuaraan Regional"> Juara 3 Kejuaraan Regional (antar kota atau kabupaten) 
                         </label>
                         <label class="d-block">
-                            <input type="checkbox" name="prestasi[]" value="Juara 3 Kejuaraan Local"> Juara 3 Kejuaraan Local
+                            <input type="checkbox" name="prestasi[]" value="Juara 3 Kejuaraan Local"> Juara 3 Kejuaraan Local (turnamen sekolah/kompetisi komunitas) 
                         </label>
                     </div>
                     <hr>

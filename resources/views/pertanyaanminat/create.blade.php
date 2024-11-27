@@ -39,7 +39,7 @@
     <div class="form-group row">
                       <label for="pertanyaan" class="col-sm-3 col-form-label">Pertanyaan</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" name="pertanyaan" id="pertanyaan"  placeholder="Deskripsi" required>
+                        <input type="text" class="form-control" name="pertanyaan" id="pertanyaan"  placeholder="Pertanyaan" required>
                       </div>
                     </div>
         <br>

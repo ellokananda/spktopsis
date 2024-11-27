@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('style/css/vertical-layout-light/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('style/images/iconr.png') }}" />
-    <style>
+    <!-- <style>
         .sidebar {
             position: fixed; /* Membuat sidebar tetap di tempat */
             top: 70px; /* Posisi dari bagian atas halaman */
@@ -51,7 +51,7 @@
                 align-items: flex-start; /* Rata kiri untuk item navbar */
             }
         }
-    </style>
+    </style> -->
 </head>
 
 <body>
@@ -63,22 +63,11 @@
                 </a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-                    <span class="icon-menu"></span>
-                </button>
-                <ul class="navbar-nav mr-lg-2">
-                    <li class="nav-item nav-search d-none d-lg-block">
-                        <div class="input-group">
-                            <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                                <span class="input-group-text" id="search">
-                                    <i class="icon-search"></i>
-                                </span>
-                            </div>
-                            <input type="text" class="form-control" id="live-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
-                        </div>
-                    </li>
-                </ul>
-                <ul class="navbar-nav navbar-nav-right">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>
+        </button>
+
+        <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" id="profileDropdown">
                             <i class="fas fa-user text-primary ml-2"></i> <!-- Menambahkan ikon profil -->
@@ -91,11 +80,14 @@
                         </div>
                     </li>
                 </ul>
-            </div>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="icon-menu"></span>
+        </button>
+      </div>
         </nav>
 
-        <div class="container-fluid page-body-wrapper">
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="container-fluid page-body-wrapper" >
+            <nav class="sidebar sidebar-offcanvas" id="sidebar" >
             <ul class="nav">
     @if(Auth::user()->role == 'admin')
         <!-- Menu untuk admin -->
